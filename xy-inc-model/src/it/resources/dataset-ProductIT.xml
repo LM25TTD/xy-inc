@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+	<PRODUCT ID="1" NAME="ProdOne"
+		DESCRIPTION="Product of type one, with premium features" PRICE="1.78"
+		CATEGORY="HOME" />
+
+	<PRODUCT ID="2" NAME="ProdTwo"
+		DESCRIPTION="Product of type two, with all premium features" PRICE="3.78"
+		CATEGORY="HEALTH" />
+		
+	<PRODUCT ID="3" NAME="ProdThree"
+		DESCRIPTION="Product of type three, with  premium features" PRICE="2.59"
+		CATEGORY="SMARTPHONE" />
+		
+	<PRODUCT ID="4" NAME="ProdFour"
+		DESCRIPTION="Product of type four, with no premium features" PRICE="12.59"
+		CATEGORY="PET" />
+		
+	<PRODUCT ID="5" NAME="ProdFive"
+		DESCRIPTION="Product of type five, with no premium features" PRICE="442.59"
+		CATEGORY="GOLF" />
+
+</dataset>

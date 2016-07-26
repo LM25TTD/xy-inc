@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  
+  <artifactId>xy-inc-model</artifactId>
+  <packaging>jar</packaging>
+  
+  <name>XY-INC Model</name>
+  
+  <parent>
+		<groupId>com.lm25ttd</groupId>
+		<artifactId>xy-inc</artifactId>
+		<version>${current.version}</version>
+		<relativePath>../xy-inc</relativePath>
+  </parent>
+  
+  <build>
+        <finalName>xy-inc-model</finalName>
+  </build>
+  
+  <dependencies>
+        <dependency>
+            <groupId>com.lm25ttd</groupId>
+            <artifactId>xy-inc-core</artifactId>
+            <version>${current.version}</version>
+        </dependency>        
+        <dependency>
+            <groupId>com.lm25ttd</groupId>
+            <artifactId>xy-inc-core</artifactId>
+            <version>${current.version}</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+	
+</project>

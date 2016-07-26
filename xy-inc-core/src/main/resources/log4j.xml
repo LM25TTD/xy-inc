@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+ 
+<log4j:configuration debug="false" xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <!-- CONSOLE SETTINGS -->
+    <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{dd-MMM HH:mm}] [%-5p] {%c} %m%n" />
+        </layout>
+    </appender>
+
+    <!-- JBOSS LOGGING -->
+    <logger name="org.jboss"><level value="warn" /></logger>
+
+    <!-- HIBERNATE LOGGING
+        Category                    Function
+        org.hibernate               Log everything (a lot of information, but very useful for troubleshooting)         
+        org.hibernate.SQL           Log all SQL DML statements as they are executed 
+        org.hibernate.type          Log all JDBC parameters 
+        org.hibernate.tool.hbm2ddl  Log all SQL DDL statements as they are executed 
+        org.hibernate.pretty        Log the state of all entities (max 20 entities) associated with the session at flush time 
+        org.hibernate.cache         Log all second-level cache activity 
+        org.hibernate.transaction   Log transaction related activity 
+        org.hibernate.jdbc          Log all JDBC resource acquisition 
+        org.hibernate.hql.ast.AST   Log HQL and SQL ASTs during query parsing 
+        org.hibernate.secure        Log all JAAS authorization requests 
+    -->
+    <logger name="org.hibernate"><level value="warn" /></logger>
+
+    <!-- SPRING LOGGING -->
+    <logger name="org.springframework"><level value="warn" /></logger>
+    <logger name="com.github.springtestdbunit"><level value="warn" /></logger>
+
+    <!-- DBUNIT LOGGING -->
+    <logger name="org.dbunit"><level value="error"/></logger>
+
+    <!-- JSON LOGGING -->
+    <logger name="com.jayway"><level value="warn"/></logger>
+    
+    <root>
+        <level value="${log4j.root.level}" />
+        <appender-ref ref="consoleAppender" />
+    </root>
+ 
+</log4j:configuration>
