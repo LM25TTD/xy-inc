@@ -1,18 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>com.lm25ttd</groupId>
 	<artifactId>xy-inc</artifactId>
 	<version>${current.version}</version>
 	<packaging>pom</packaging>
 
 	<name>XY-INC</name>
-	
+
 	<modules>
 		<module>../xy-inc-core</module>
 		<module>../xy-inc-model</module>
+		<module>../xy-inc-service</module>
+		<module>../xy-inc-rest</module>
 	</modules>
 
 	<properties>
@@ -38,6 +40,16 @@
 			<properties>
 				<!-- Logging -->
 				<log4j.root.level>debug</log4j.root.level>
+				<!-- Database configuration -->
+				<xyinc.jdbc.driverClassName>com.mysql.jdbc.Driver</xyinc.jdbc.driverClassName>
+				<xyinc.jdbc.url>jdbc:mysql://localhost:3306/xyinc</xyinc.jdbc.url>
+				<xyinc.jdbc.user>xyinc</xyinc.jdbc.user>
+				<xyinc.jdbc.pass>xyinc</xyinc.jdbc.pass>
+				<xyinc.hibernate.dialect>org.hibernate.dialect.MySQLDialect</xyinc.hibernate.dialect>
+				<xyinc.hibernate.show_sql>true</xyinc.hibernate.show_sql>
+				<xyinc.hibernate.generate_statistics>false</xyinc.hibernate.generate_statistics>
+				<xyinc.hibernate.hbm2ddl.auto>create</xyinc.hibernate.hbm2ddl.auto>
+				<xyinc.hibernate.hbm2ddl.import_files>dev/xyinc_initial_data.sql</xyinc.hibernate.hbm2ddl.import_files>
 			</properties>
 		</profile>
 		<profile>
@@ -45,6 +57,16 @@
 			<properties>
 				<!-- Logging -->
 				<log4j.root.level>debug</log4j.root.level>
+				<!-- Database configuration -->
+				<xyinc.jdbc.driverClassName>com.mysql.jdbc.Driver</xyinc.jdbc.driverClassName>
+				<xyinc.jdbc.url>jdbc:mysql://localhost:3306/xyinc</xyinc.jdbc.url>
+				<xyinc.jdbc.user>xyinc</xyinc.jdbc.user>
+				<xyinc.jdbc.pass>xyinc</xyinc.jdbc.pass>
+				<xyinc.hibernate.dialect>org.hibernate.dialect.MySQLDialect</xyinc.hibernate.dialect>
+				<xyinc.hibernate.show_sql>true</xyinc.hibernate.show_sql>
+				<xyinc.hibernate.generate_statistics>false</xyinc.hibernate.generate_statistics>
+				<xyinc.hibernate.hbm2ddl.auto>create</xyinc.hibernate.hbm2ddl.auto>
+				<xyinc.hibernate.hbm2ddl.import_files>dev/xyinc_initial_data.sql</xyinc.hibernate.hbm2ddl.import_files>
 			</properties>
 		</profile>
 		<profile>
@@ -52,6 +74,16 @@
 			<properties>
 				<!-- Logging -->
 				<log4j.root.level>info</log4j.root.level>
+				<!-- Database configuration -->
+				<xyinc.jdbc.driverClassName>com.mysql.jdbc.Driver</xyinc.jdbc.driverClassName>
+				<xyinc.jdbc.url>jdbc:mysql://localhost:3306/xyinc</xyinc.jdbc.url>
+				<xyinc.jdbc.user>xyinc</xyinc.jdbc.user>
+				<xyinc.jdbc.pass>xyinc</xyinc.jdbc.pass>
+				<xyinc.hibernate.dialect>org.hibernate.dialect.MySQLDialect</xyinc.hibernate.dialect>
+				<xyinc.hibernate.show_sql>true</xyinc.hibernate.show_sql>
+				<xyinc.hibernate.generate_statistics>false</xyinc.hibernate.generate_statistics>
+				<xyinc.hibernate.hbm2ddl.auto>create</xyinc.hibernate.hbm2ddl.auto>
+				<xyinc.hibernate.hbm2ddl.import_files>dev/xyinc_initial_data.sql</xyinc.hibernate.hbm2ddl.import_files>
 			</properties>
 		</profile>
 	</profiles>
@@ -205,5 +237,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-		
 </project>

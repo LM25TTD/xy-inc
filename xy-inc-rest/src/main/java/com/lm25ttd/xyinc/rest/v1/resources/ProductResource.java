@@ -62,6 +62,9 @@ public class ProductResource {
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	public ProductDTO getProductById(@PathVariable Long id) throws ProductNotFoundException {
+		if (id == null) {
+			throw new ProductNotFoundException(0L);
+		}
 		Product product = productService.getProductById(id);
 		return new ProductDTO(product);
 	}
@@ -85,6 +88,9 @@ public class ProductResource {
 	@PreAuthorize("hasAnyAuthority('" + AccountRole.Names.ADMIN + "')")
 	public ProductDTO createProduct(@RequestBody ProductDTO productDTO)
 			throws ProductNameAlreadyExistsException, IdentifierUpdatedException, ProductNotFoundException {
+		if (productDTO == null || productDTO.getWrapped() == null) {
+			throw new ProductNotFoundException(0L);
+		}
 		Product savedProduct = productService.saveProduct(productDTO.getWrapped());
 		return new ProductDTO(savedProduct);
 	}
@@ -110,6 +116,10 @@ public class ProductResource {
 	@PreAuthorize("hasAnyAuthority('" + AccountRole.Names.ADMIN + "')")
 	public ProductDTO editProduct(@PathVariable Long id, @RequestBody ProductDTO productDTO)
 			throws ProductNotFoundException, ProductNameAlreadyExistsException, IdentifierUpdatedException {
+
+		if (productDTO == null || productDTO.getWrapped() == null || id == null) {
+			throw new ProductNotFoundException(0L);
+		}
 		Product product = productDTO.getWrapped();
 		product.setId(id);
 		product = productService.updateProduct(product);
@@ -128,6 +138,9 @@ public class ProductResource {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@PreAuthorize("hasAnyAuthority('" + AccountRole.Names.ADMIN + "')")
 	public void deleteProduct(@PathVariable Long id) throws ProductNotFoundException {
+		if (id == null) {
+			throw new ProductNotFoundException(0L);
+		}
 		productService.deleteProductById(id);
 	}
 }

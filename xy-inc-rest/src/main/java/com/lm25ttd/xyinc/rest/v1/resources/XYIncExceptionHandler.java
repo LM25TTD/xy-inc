@@ -3,12 +3,14 @@ package com.lm25ttd.xyinc.rest.v1.resources;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.lm25ttd.xyinc.core.exceptions.AccountLoginException;
 import com.lm25ttd.xyinc.core.exceptions.EntityAlreadyExistsException;
 import com.lm25ttd.xyinc.core.exceptions.EntityNotFoundException;
@@ -57,5 +59,12 @@ public class XYIncExceptionHandler {
 		LOGGER.debug(e.getMessage());
 		return new ErrorResponse(e);
 	}
-
+	
+	@ResponseBody
+	@ResponseStatus(HttpStatus.BAD_REQUEST) // 400
+	@ExceptionHandler({ IllegalArgumentException.class, JsonParseException.class, HttpMessageNotReadableException.class })
+	public ErrorResponse handleBadRequestException(Throwable e) {
+		LOGGER.debug(e.getMessage());
+		return new ErrorResponse(e);
+	}
 }
