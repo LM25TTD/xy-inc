@@ -67,6 +67,23 @@ public class ProductServiceIT {
 	}
 
 	@Test
+	public void getProductByNameWorks() throws ProductNotFoundException {
+		Long expectedId = 1L;
+		String expectedName = "ProdOne";
+		Product actual = productService.getProductByName(expectedName);
+
+		assertNotNull(actual);
+		assertEquals(expectedId, actual.getId());
+		assertEquals(expectedName, actual.getName());
+	}
+
+	@Test(expected = EntityNotFoundException.class)
+	public void getProductByNameNotFound() throws ProductNotFoundException {
+		String expectedName = "NOT_FOUND_";
+		productService.getProductByName(expectedName);
+	}
+
+	@Test
 	public void createProductWorks()
 			throws ProductNameAlreadyExistsException, IdentifierUpdatedException, ProductNotFoundException {
 		Product prod = new Product();
@@ -75,7 +92,7 @@ public class ProductServiceIT {
 		prod.setPrice(5.57);
 		prod.setCategory("NEW_THINGS");
 
-		productService.saveProduct(prod);
+		Product actual = productService.saveProduct(prod);
 
 		int expectedSize = 6;
 		List<Product> allProducts = productService.getAllProducts();
@@ -85,7 +102,6 @@ public class ProductServiceIT {
 
 		Long expectedId = 6L;
 		String expectedName = "ProdSix";
-		Product actual = productService.getProductById(expectedId);
 
 		assertNotNull(actual);
 		assertEquals(expectedId, actual.getId());
@@ -130,7 +146,7 @@ public class ProductServiceIT {
 		expectedName = "ProdOneModified";
 
 		prod.setName(expectedName);
-		productService.saveProduct(prod);
+		productService.updateProduct(prod);
 
 		prod = productService.getProductById(expectedId);
 		assertNotNull(prod);
@@ -169,10 +185,10 @@ public class ProductServiceIT {
 		prod.setDescription("A new product inserted");
 		prod.setPrice(5.57);
 		prod.setCategory("NEW_THINGS");
-		
+
 		productService.deleteProduct(prod);
 	}
-	
+
 	@Test(expected = ProductNotFoundException.class)
 	public void deleteProductByIdNotFound() throws ProductNotFoundException {
 		Long expectedId = 9L;

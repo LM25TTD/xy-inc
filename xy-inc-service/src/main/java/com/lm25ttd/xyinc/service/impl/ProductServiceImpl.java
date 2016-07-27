@@ -38,14 +38,32 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void saveProduct(Product product) throws ProductNameAlreadyExistsException, IdentifierUpdatedException {
+	public Product getProductByName(String name) throws ProductNotFoundException {
+		return retrieveIfExists(name);
+	}
+
+	@Override
+	public Product saveProduct(Product product) throws ProductNameAlreadyExistsException, IdentifierUpdatedException {
 		Product retrieved = productRepository.findByName(product.getName());
 		if (retrieved != null && product.anonymous()) {
 			throw new ProductNameAlreadyExistsException(product.getName());
 		} else if (!product.anonymous() && retrieved != null && !Utils.equals(product.getId(), retrieved.getId())) {
 			throw new IdentifierUpdatedException();
 		}
-		productRepository.save(product);
+		return productRepository.save(product);
+	}
+
+	@Override
+	public Product updateProduct(Product product)
+			throws ProductNotFoundException, ProductNameAlreadyExistsException {
+		if(!productRepository.exists(product.getId()))
+		{
+			throw new ProductNotFoundException(product.getId());
+		}		
+		if(productRepository.existsOtherProductWithName(product.getId(), product.getName())){
+			throw new ProductNameAlreadyExistsException(product.getName());
+		}
+		return productRepository.save(product);
 	}
 
 	@Override
@@ -68,6 +86,14 @@ public class ProductServiceImpl implements ProductService {
 		Product retrieved = productRepository.findById(id);
 		if (retrieved == null) {
 			throw new ProductNotFoundException(id);
+		}
+		return retrieved;
+	}
+
+	private Product retrieveIfExists(String name) throws ProductNotFoundException {
+		Product retrieved = productRepository.findByName(name);
+		if (retrieved == null) {
+			throw new ProductNotFoundException(name);
 		}
 		return retrieved;
 	}

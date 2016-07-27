@@ -35,17 +35,43 @@ public interface ProductService {
 	public Product getProductById(Long id) throws ProductNotFoundException;
 
 	/**
-	 * Save (creating or updating) a {@link Product} object.
+	 * Retrieves a {@link Product} object with given name.
+	 * 
+	 * @param name
+	 *            The name of the product.
+	 * @return A {@link Product} object.
+	 * @throws ProductNotFoundException
+	 *             If there is no product with given name.
+	 */
+	public Product getProductByName(String name) throws ProductNotFoundException;
+
+	/**
+	 * Save a new {@link Product} object.
 	 * 
 	 * @param product
 	 *            The {@link Product} object to be saved.
+	 * @return The saved {@link Product} object.
 	 * @throws ProductNameAlreadyExistsException
 	 *             If there is other product with same name into system.
 	 * @throws IdentifierUpdatedException
 	 *             If during the update case, an id change is applied (Id cannot
 	 *             be updated).
 	 */
-	public void saveProduct(Product product) throws ProductNameAlreadyExistsException, IdentifierUpdatedException;
+	public Product saveProduct(Product product) throws ProductNameAlreadyExistsException, IdentifierUpdatedException;
+
+	/**
+	 * Updates a {@link Product} object.
+	 * 
+	 * @param product
+	 *            The {@link Product} object to be updated.
+	 * @return The updated {@link Product} object.
+	 * @throws ProductNotFoundException
+	 *             If the product doesn't exists into database.
+	 * @throws ProductNameAlreadyExistsException
+	 *             If there is other product with same name into system.
+	 */
+	public Product updateProduct(Product product)
+			throws ProductNotFoundException, ProductNameAlreadyExistsException;
 
 	/**
 	 * Delete a given {@link Product} object from database.
