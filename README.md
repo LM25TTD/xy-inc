@@ -25,3 +25,17 @@ POST http://<computer:port>/xy-inc-rest/v1/products (e objeto Product no formato
 PUT http://<computer:port>/xy-inc-rest/v1/products/<ID> (e objeto Product no formato JSON como Body) (Edita um produto)
 
 DELETE http://<computer:port>/xy-inc-rest/v1/products/<id> (Deleta um produto)
+
+
+# Utilização da API
+
+Para utilizar a REST API, será necessário que as requisições utilizem Basic Authentication (ex: http://{user}:{password}@server/xy-inc-rest/v1/products)
+
+Existem algumas regras de perfil:
+ - Apenas usuários autenticados poderam utilizar a API
+ - Apenas usuários com perfil administrador pode alterar produtos (deletar e editar)
+ 
+Os usuários pré cadastrados e suas respectivas senhas são:
+ - Login: ADMIN  Senha: 1234   (Perfil administrador)
+ - Login: USER1  Senha: 1234   (Perfil usuário comum)
+ - Login: USER2  Senha: 1234   (Perfil usuário comum)
