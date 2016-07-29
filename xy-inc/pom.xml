@@ -75,10 +75,12 @@
 				<!-- Logging -->
 				<log4j.root.level>info</log4j.root.level>
 				<!-- Database configuration -->
+				<xyinc.host>${env.OPENSHIFT_MYSQL_DB_HOST}</xyinc.host>
+				<xyinc.db.port>${env.OPENSHIFT_MYSQL_DB_PORT}</xyinc.db.port>
 				<xyinc.jdbc.driverClassName>com.mysql.jdbc.Driver</xyinc.jdbc.driverClassName>
-				<xyinc.jdbc.url>jdbc:mysql://localhost:3306/xyinc</xyinc.jdbc.url>
-				<xyinc.jdbc.user>xyinc</xyinc.jdbc.user>
-				<xyinc.jdbc.pass>xyinc</xyinc.jdbc.pass>
+				<xyinc.jdbc.url>jdbc:mysql://${xyinc.host}:${xyinc.db.port}/xyinc</xyinc.jdbc.url>
+				<xyinc.jdbc.user>${env.OPENSHIFT_MYSQL_DB_USERNAME}</xyinc.jdbc.user>
+				<xyinc.jdbc.pass>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</xyinc.jdbc.pass>
 				<xyinc.hibernate.dialect>org.hibernate.dialect.MySQLDialect</xyinc.hibernate.dialect>
 				<xyinc.hibernate.show_sql>true</xyinc.hibernate.show_sql>
 				<xyinc.hibernate.generate_statistics>false</xyinc.hibernate.generate_statistics>
@@ -116,8 +118,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 			<!-- Integration Test Settings: "mvn verify" should execute IT tests -->
