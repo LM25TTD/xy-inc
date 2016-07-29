@@ -24,7 +24,7 @@ POST http://{computer:port}/xy-inc-rest/v1/products (e objeto Product no formato
 
 PUT http://{computer:port}/xy-inc-rest/v1/products/{id} (e objeto Product no formato JSON como Body) (Edita um produto)
 
-DELETE http://{<computer:port}/xy-inc-rest/v1/products/{id} (Deleta um produto)
+DELETE http://{computer:port}/xy-inc-rest/v1/products/{id} (Deleta um produto)
 
 
 # Utilização da API
