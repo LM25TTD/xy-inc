@@ -39,3 +39,9 @@ Os usuários pré cadastrados e suas respectivas senhas são:
  - Login: ADMIN  Senha: 1234   (Perfil administrador)
  - Login: USER1  Senha: 1234   (Perfil usuário comum)
  - Login: USER2  Senha: 1234   (Perfil usuário comum)
+
+#Online
+
+A API se encontra em funcionamento no endereço:
+
+https://xyinc-lm25ttd.rhcloud.com/xy-inc-rest/v1/products
