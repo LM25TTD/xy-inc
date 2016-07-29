@@ -16,15 +16,15 @@ Finalizado o build, o artefato principal será o arquivo .war, localizado no pro
 
 Após o deploy da aplicação, a REST api estará disponível com os endpoints:
 
-GET http://<computer:port>/xy-inc-rest/v1/products (Listar todos os produtos)
+GET http://{computer:port}/xy-inc-rest/v1/products (Listar todos os produtos)
 
-GET http://<computer:port>/xy-inc-rest/v1/products/<id> (Detalhes de um produto)
+GET http://{computer:port}/xy-inc-rest/v1/products/{id} (Detalhes de um produto)
 
-POST http://<computer:port>/xy-inc-rest/v1/products (e objeto Product no formato JSON como Body) (Cria um produto)
+POST http://{computer:port}/xy-inc-rest/v1/products (e objeto Product no formato JSON como Body) (Cria um produto)
 
-PUT http://<computer:port>/xy-inc-rest/v1/products/<ID> (e objeto Product no formato JSON como Body) (Edita um produto)
+PUT http://{computer:port}/xy-inc-rest/v1/products/{id} (e objeto Product no formato JSON como Body) (Edita um produto)
 
-DELETE http://<computer:port>/xy-inc-rest/v1/products/<id> (Deleta um produto)
+DELETE http://{<computer:port}/xy-inc-rest/v1/products/{id} (Deleta um produto)
 
 
 # Utilização da API
