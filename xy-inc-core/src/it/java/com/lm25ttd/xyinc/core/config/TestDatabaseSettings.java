@@ -2,6 +2,9 @@ package com.lm25ttd.xyinc.core.config;
 
 import java.util.Properties;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
@@ -62,19 +65,35 @@ public class TestDatabaseSettings {
 	@Value("${xyinc.hibernate.hbm2ddl.import_files:}")
 	private String databaseImportFiles = null;
 
+	@Value("${xyinc.jdbc.datasource.name:}")
+	private String jdbcDatasourceName = null;
+
 	/**
 	 * Set up the data source for database.
 	 */
 	@Bean(name = "dataSource")
 	public DataSource dataSource() {
-
+		if (jdbcDatasourceName != null) {
+			try {
+				Context ic = new InitialContext();
+				Context initialContext = (Context) ic.lookup("java:comp/env");
+				return (DataSource) initialContext.lookup(jdbcDatasourceName);
+			} catch (NamingException e) {
+				e.printStackTrace();
+				return getDefaultDataSource();
+			}
+		} else {
+			return getDefaultDataSource();
+		}
+	}
+	
+	private DataSource getDefaultDataSource(){
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName(this.databaseDriver);
 		ds.setUrl(this.databaseUrl);
 		ds.setUsername(this.databaseUser);
 		ds.setPassword(this.databasePass);
 		return ds;
-
 	}
 
 	/**
@@ -127,7 +146,7 @@ public class TestDatabaseSettings {
 		transactionManager.setEntityManagerFactory(emf);
 		return transactionManager;
 
-	}	
+	}
 
 	@Bean
 	public PlatformTransactionManager xyincTransactionManager(

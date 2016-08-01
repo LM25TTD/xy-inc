@@ -50,6 +50,7 @@
 				<xyinc.hibernate.generate_statistics>false</xyinc.hibernate.generate_statistics>
 				<xyinc.hibernate.hbm2ddl.auto>create</xyinc.hibernate.hbm2ddl.auto>
 				<xyinc.hibernate.hbm2ddl.import_files>dev/xyinc_initial_data.sql</xyinc.hibernate.hbm2ddl.import_files>
+				<xyinc.jdbc.datasource.name>jdbc/MySQLDS</xyinc.jdbc.datasource.name>
 			</properties>
 		</profile>
 		<profile>
@@ -67,6 +68,7 @@
 				<xyinc.hibernate.generate_statistics>false</xyinc.hibernate.generate_statistics>
 				<xyinc.hibernate.hbm2ddl.auto>create</xyinc.hibernate.hbm2ddl.auto>
 				<xyinc.hibernate.hbm2ddl.import_files>dev/xyinc_initial_data.sql</xyinc.hibernate.hbm2ddl.import_files>
+				<xyinc.jdbc.datasource.name>jdbc/MySQLDS</xyinc.jdbc.datasource.name>
 			</properties>
 		</profile>
 		<profile>
@@ -86,6 +88,7 @@
 				<xyinc.hibernate.generate_statistics>false</xyinc.hibernate.generate_statistics>
 				<xyinc.hibernate.hbm2ddl.auto>create</xyinc.hibernate.hbm2ddl.auto>
 				<xyinc.hibernate.hbm2ddl.import_files>dev/xyinc_initial_data.sql</xyinc.hibernate.hbm2ddl.import_files>
+				<xyinc.jdbc.datasource.name>jdbc/MySQLDS</xyinc.jdbc.datasource.name>
 			</properties>
 		</profile>
 	</profiles>
